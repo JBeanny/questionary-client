@@ -15,6 +15,8 @@ const Modal = ({ setValue }: { setValue: (parameter: any) => void }) => {
       chosen: 0,
     },
   ]);
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
 
   const handleAddMoreOption = () => {
     setOptions([...options, { id: options.length + 1, option: "", chosen: 0 }]);
@@ -32,6 +34,8 @@ const Modal = ({ setValue }: { setValue: (parameter: any) => void }) => {
     const data = {
       question: question,
       answers: options,
+      start_date: startDate,
+      end_date: endDate,
     };
 
     await fetch(api, {
@@ -51,10 +55,10 @@ const Modal = ({ setValue }: { setValue: (parameter: any) => void }) => {
         }
       });
   };
-
+  console.log(startDate, endDate);
   return (
     <>
-      <div className="w-[500px] h-[700px] bg-white shadow-md drop-shadow-md rounded-lg flex flex-col p-2 gap-4">
+      <div className="w-[500px] h-[800px] bg-white shadow-md drop-shadow-md rounded-lg flex flex-col p-2 gap-4">
         <div className="uppercase">add new question</div>
         <div
           className="uppercase absolute right-[10px] top-[10px] cursor-pointer text-red"
@@ -99,6 +103,26 @@ const Modal = ({ setValue }: { setValue: (parameter: any) => void }) => {
           >
             Add more option
           </button>
+        </div>
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="start_date">Start Date</label>
+            <input
+              type="datetime-local"
+              id="start_date"
+              className="border-2 border-primary rounded-lg px-4 py-2"
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="end_date">End Date</label>
+            <input
+              type="datetime-local"
+              id="end_date"
+              className="border-2 border-primary rounded-lg px-4 py-2"
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </div>
         </div>
         <button
           className="uppercase py-4 px-4 bg-primary fixed bottom-[10px] left-[10px] right-[10px] rounded-md text-white"

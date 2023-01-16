@@ -157,7 +157,7 @@ const Manage = ({ response }: { response: { questions: Array<Question> } }) => {
       <div
         className={`transition-all duration-100 ease-linear ${
           popup ? "scale-100" : "scale-0"
-        } absolute left-[50%] top-[50%] z-50 -ml-[250px] -mt-[350px] `}
+        } absolute left-[50%] top-[50%] z-50 -ml-[250px] -mt-[400px] `}
       >
         <CustomModal setValue={setPopup} />
       </div>

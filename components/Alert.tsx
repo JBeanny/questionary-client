@@ -3,7 +3,7 @@ import { Alert } from "antd";
 
 const CustomAlert = (
   { message }: { message: string },
-  { success }: { success: string }
+  { success }: { success: boolean }
 ) => {
   return (
     <div className="absolute top-[10px] w-[300px] left-[50%] -ml-[150px]">
