@@ -10,12 +10,14 @@
 
 # Introduction
 
-    Voting App is an application that allows users to create questions with differennt answers and play around with the questions. You will also get notifications if the questions are out of date.
+    Voting App is an application that allows users to create questions with
+    differennt answers and play around with the questions. You will also
+    get notifications if the questions are out of date.
 
 # Technologies in used:
 
 <div style="display:flex; align-items:center; gap: 10px;">
- <img src="https://d2nir1j4sou8ez.cloudfront.net/wp-content/uploads/2021/12/nextjs-boilerplate-logo.png" style="width:200px; height: 100px; object-fit: contain;"/>
+ <img src="https://d2nir1j4sou8ez.cloudfront.net/wp-content/uploads/2021/12/nextjs-boilerplate-logo.png" style="width:100px; height: 100px; object-fit: contain;"/>
  <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-ar21.png" style="width:200px; height: 100px; object-fit: contain; border-radius: 10px"/>
  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" style="width:200px; height: 100px; object-fit: contain;"/>
  <img src="https://www.vectorlogo.zone/logos/socketio/socketio-ar21.png" style="width:200px; height: 100px; object-fit: contain; border-radius: 10px;"/>
