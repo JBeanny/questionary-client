@@ -47,7 +47,7 @@ const Play = ({ response }: { response: { questions: Array<Question> } }) => {
 
   const addVote = async (id: number) => {
     const api = `http://localhost:8080/api/v1/options/${id}?question=${question.id}`;
-    const uid = JSON.parse(localStorage.getItem("UID") as string);
+    const uid = localStorage.getItem("UID") as string;
 
     const data = {
       uid: uid,

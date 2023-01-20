@@ -17,14 +17,16 @@ export default function App({ Component, pageProps }: AppProps) {
   const [notification, setNotification] = useState<Array<Notification>>([]);
 
   useEffect(() => {
+    socket.emit("join_room", { ID: localStorage.getItem("UID") as string });
+
     socket.on("notification", (data: any) => {
+      console.log(data.notification);
       setNotification(data.notification);
     });
 
     socket.on("get-uid", (data: any) => {
-      localStorage.setItem("UID", JSON.stringify(data.uid));
+      localStorage.setItem("UID", data.uid);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
 
   if (notification.length > 0) {
