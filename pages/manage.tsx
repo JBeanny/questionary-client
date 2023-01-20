@@ -8,13 +8,13 @@ import Link from "next/link";
 import CustomAlert from "../components/Alert";
 
 interface Answer {
-  id: number;
+  _id: string;
   option: string;
   chosen: number;
 }
 
 interface Question {
-  id: number;
+  _id: string;
   question: string;
   answers: Array<Answer>;
 }
@@ -35,8 +35,9 @@ const Manage = ({ response }: { response: { questions: Array<Question> } }) => {
   const [isQuestionEdit, setIsQuestionEdit] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
+  //add option
   const handleAddOption = async () => {
-    const api = `http://localhost:8080/api/v1/options?question=${selected?.id}`;
+    const api = `http://localhost:8080/api/v1/options?question=${selected?._id}`;
 
     await fetch(api, {
       method: "POST",
@@ -59,38 +60,9 @@ const Manage = ({ response }: { response: { questions: Array<Question> } }) => {
       });
   };
 
-  // const handleQuestionChange = (e: any) => {
-  //   setIsQuestionEdit(true);
-  //   setSelected({
-  //     id: selected?.id,
-  //     question: e.target.value,
-  //     answers: selected?.answers,
-  //   });
-  // };
-
-  // const handleUpdateQuestion = async () => {
-  //   const api = `http://localhost:8080/questions/${selected?.id}`;
-
-  //   await fetch(api, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(selected),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((response) => {
-  //       if (response.status === "Success") {
-  //         window.location.reload();
-  //       } else {
-  //         setError(response.message);
-  //       }
-  //     });
-  //   setIsQuestionEdit(false);
-  // };
-
+  //delete question
   const handleDeleteQuestion = async () => {
-    const api = `http://localhost:8080/api/v1/questions/${selected?.id}`;
+    const api = `http://localhost:8080/api/v1/questions/${selected?._id}`;
 
     await fetch(api, {
       method: "DELETE",
@@ -113,8 +85,9 @@ const Manage = ({ response }: { response: { questions: Array<Question> } }) => {
     setIsModalOpen(false);
   };
 
-  const handleDeleteOption = async (id: number) => {
-    const api = `http://localhost:8080/api/v1/options/${id}?question=${selected?.id}`;
+  //delete option
+  const handleDeleteOption = async (id: string) => {
+    const api = `http://localhost:8080/api/v1/options/${id}?question=${selected?._id}`;
 
     await fetch(api, {
       method: "DELETE",
@@ -292,7 +265,7 @@ const Manage = ({ response }: { response: { questions: Array<Question> } }) => {
                           </label>
                           <label
                             className="px-4 h-[50px] bg-primary border-2 border-transparent flex justify-center items-center rounded-lg cursor-pointer text-white active:animate-ping"
-                            onClick={() => handleDeleteOption(selected?.id)}
+                            onClick={() => handleDeleteOption(answer._id)}
                           >
                             <BsTrash className="text-xl" />
                           </label>

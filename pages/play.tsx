@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Alert } from "antd";
 
 interface Answer {
-  id: number;
+  _id: string;
   option: string;
   chosen: number;
 }
 
 interface Question {
-  id: number;
+  _id: string;
   question: string;
   answers: Array<Answer>;
 }
@@ -45,8 +45,8 @@ const Play = ({ response }: { response: { questions: Array<Question> } }) => {
     return percentages;
   };
 
-  const addVote = async (id: number) => {
-    const api = `http://localhost:8080/api/v1/options/${id}?question=${question.id}`;
+  const addVote = async (_id: string) => {
+    const api = `http://localhost:8080/api/v1/options/${_id}?question=${question._id}`;
     const uid = localStorage.getItem("UID") as string;
 
     const data = {
@@ -99,7 +99,7 @@ const Play = ({ response }: { response: { questions: Array<Question> } }) => {
                 <div
                   key={key}
                   className="text-xl bg-transparent w-[700px] py-4 rounded-full p-8 text-primary border-2 border-primary active:bg-primary cursor-pointer active:text-white relative overflow-hidden"
-                  onClick={() => addVote(answer.id)}
+                  onClick={() => addVote(answer._id)}
                 >
                   {answer.option}
                   <div

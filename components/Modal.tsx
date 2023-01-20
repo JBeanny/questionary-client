@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 interface Option {
-  id: number;
   option: string;
   chosen: number;
 }
@@ -10,7 +9,6 @@ const Modal = ({ setValue }: { setValue: (parameter: any) => void }) => {
   const [question, setQuestion] = useState<string>("");
   const [options, setOptions] = useState<Array<Option>>([
     {
-      id: 1,
       option: "",
       chosen: 0,
     },
@@ -19,7 +17,7 @@ const Modal = ({ setValue }: { setValue: (parameter: any) => void }) => {
   const [endDate, setEndDate] = useState<string>("");
 
   const handleAddMoreOption = () => {
-    setOptions([...options, { id: options.length + 1, option: "", chosen: 0 }]);
+    setOptions([...options, { option: "", chosen: 0 }]);
   };
 
   const handleChangeOption = (e: any, index: number) => {
